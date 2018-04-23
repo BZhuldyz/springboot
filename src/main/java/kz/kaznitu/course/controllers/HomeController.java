@@ -1,4 +1,4 @@
-package kz.kaznitu.footballplayer.controllers;
+package kz.kaznitu.course.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @RequestMapping("/")
     public String hello(){
-        return "hello";
+        return "home";
     }
 }

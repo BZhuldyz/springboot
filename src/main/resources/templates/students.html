@@ -1,59 +1,60 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Players</title>
+    <title>Students</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
 </head>
 <body>
-<div class="container">
+<div class="container text-center">
     <div class="page-header" id="banner">
         <div class="row">
-            <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Добавить игрока</h1>
-                <form class="needs-validation" novalidate th:action="@{/players}" method="post" enctype="multipart/form-data">
+            <div class="col-sm-12">
+                <h1>Добавить студента</h1>
+                <h3>Выберите преподавателя</h3>
+                <form class="needs-validation" novalidate th:action="@{/students}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <select multiple class="form-control" name="clubIId" required>
-                            <option th:each="club : ${clubs}"
-                                    th:value="${club.clubId}"
-                                    th:text="${club.fullName}">Club</option>
+                        <select multiple class="form-control" name="teacherIId" required>
+                            <option th:each="teacher : ${teachers}"
+                                    th:value="${teacher.teacherId}"
+                                    th:text="${teacher.last_name}">Teacher</option>
                         </select>
-                        <div class="invalid-feedback">Выберите один клуб</div>
+                        <div class="invalid-feedback">Выберите одного преподавателя</div>
                     </div>
                     <div class="form-group">
                         <label for="first_name">First Name</label>
                         <input type="text" class="form-control" id="first_name" name="firstName" required/>
-                        <div class="invalid-feedback">Введите имя игрока</div>
+                        <div class="invalid-feedback">Введите имя студента</div>
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last Name</label>
                         <input type="text" class="form-control" id="last_name" name="lastName" required/>
-                        <div class="invalid-feedback">Введите фамилию игрока</div>
+                        <div class="invalid-feedback">Введите фамилию студента</div>
                     </div>
-                    <button type="submit" class="btn btn-default" id="submit">Добавить игрока</button>
+                    <button type="submit" class="btn btn-default" id="submit">Добавить студента</button>
                 </form>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Игроки</h1>
+            <div class="col-sm-12">
+                <h1>Студенты</h1>
 
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Игрок</th>
-                        <th>Клуб</th>
+                        <th>Студент</th>
+                        <th>Преподаватель</th>
                         <th>Действие</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="player : ${players}">
-                        <td th:text="${player.playerId}"></td>
-                        <td th:text="${player.firstName + ' ' + player.lastName}"></td>
-                        <td th:text="${player.club.fullName}"></td>
-                        <td> <a th:href = "@{'/remove?id='+${player.playerId}}"><button class="btn btn-outline=danger">Удалить</button></a><td>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.studentId}"></td>
+                        <td th:text="${student.firstName + ' ' + student.lastName}"></td>
+                        <td th:text="${student.teacher.last_name}"></td>
+                        <td> <a th:href = "@{'/remove?id='+${student.studentId}}"><button class="btn btn-outline=danger">Удалить</button></a><td>
                     </tr>
                     </tbody>
                 </table>

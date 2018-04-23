@@ -1,36 +1,36 @@
-package kz.kaznitu.footballplayer.models;
+package kz.kaznitu.course.models;
 
 import javax.persistence.*;
 
 @Entity
-public class Player {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long playerId;
+    private Long studentId;
 
     private String firstName;
 
     private String lastName;
 
     @ManyToOne
-    private Club club;
+    private Teacher teacher;
 
-    public Player() {
+    public Student() {
     }
 
-    public Player(String firstName, String lastName, Club club) {
+    public Student(String firstName, String lastName, Teacher teacher) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.club = club;
+        this.teacher = teacher;
     }
 
-    public Long getPlayerId() {
-        return playerId;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setPlayerId(Long playerId) {
-        this.playerId = playerId;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
     public String getFirstName() {
@@ -49,11 +49,11 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public Club getClub() {
-        return club;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setClub(Club club) {
-        this.club = club;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }

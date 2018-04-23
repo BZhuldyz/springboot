@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Clubs</title>
+    <title>Teachers</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <link rel="stylesheet" href="/bootstrap.min.css" media="screen"/>
@@ -12,46 +12,48 @@
     </style>
 </head>
 <body>
-<div class="container">
+<div class="container text-center">
     <div class="page-header" id="banner">
         <div class="row">
-            <div class="col-lg-8 col-md-7 col-sm-6">
-                <h1>Clubs</h1>
+            <div class="col-sm-12">
+                <h1>Teachers</h1>
 
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th>Full Name</th>
-                        <th>league</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
                     </tr>
                     </thead>
                     <tbody>
 
-                    <tr th:each="club : ${clubs}">
-                        <td th:text="${club.fullName}"></td>
-                        <td th:text="${club.league}"></td>
+                    <tr th:each="teacher : ${teachers}">
+                        <td th:text="${teacher.last_name}"></td>
+                        <td th:text="${teacher.first_name}"></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="form-row">
-            <form class="needs-validation" novalidate action="#" th:action="@{/saveclub/}" th:object="${club}" method="post">
-                <label for="full_name">Full Name</label>
-                <input type="text" id="full_name" th:field="*{fullName}" class="form-control" required/>
-                <div class="invalid-feedback">Введите название клуба</div>
+            <div class="col-sm-12">
+            <form class="needs-validation" novalidate action="#" th:action="@{/saveteacher/}" th:object="${teacher}" method="post">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" th:field="*{last_name}" class="form-control" required/>
+                <div class="invalid-feedback">Введите фамилию преподавателя</div>
 
-                <label for="league">league</label>
-                <input type="text" id="league" th:field="*{league}" class="form-control" required/>
-                <div class="invalid-feedback">Введите лигу</div>
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" th:field="*{first_name}" class="form-control" required/>
+                <div class="invalid-feedback">Введите имя</div>
                 <br/>
                 <button type="submit" class="btn btn-outline-success">Добавить</button>
             </form>
+            </div>
         </div>
         <br />
         <div class="row navigation-order">
-            <div class="col-lg-8 col-md-7 col-sm-6">
-                <a href="/players">Перейти на страницу игроков</a>
+            <div class="col-sm-12">
+                <a href="/students">Перейти на страницу студентов</a>
             </div>
         </div>
     </div>
